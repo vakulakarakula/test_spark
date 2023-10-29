@@ -8,9 +8,14 @@ object DBCalc extends App {
     .builder()
     .enableHiveSupport()
     .master("yarn")
-    .appName("DBLoader")
+    .appName("DBCalc")
     .config("hive.exec.dynamic.partition", "true")
     .config("hive.exec.dynamic.partition.mode", "nonstrict")
+    .config("spark.driver.memory", "16G")
+    .config("spark.default.parallelism", "1000")
+    .config("spark.dynamicAllocation.minExecutors", 1)
+    .config("spark.dynamicAllocation.maxExecutors", 20)
+    .config("spark.dynamicAllocation.enabled", "true")
     .config("spark.kerberos.useTicketCache", "false")
     .config("spark.kerberos.renewTGT", "false")
     .config("spark.executor.extraJavaOptions", "-Djava.security.auth.login.config=jaas.conf")
@@ -348,8 +353,8 @@ object DBCalc extends App {
     .coalesce(1)
     .write
     .mode("overwrite")
-    .option("path", "hdfs://ns-etl/warehouse/tablespace/external/hive/school_de_stg.db/results_svakulin")
-    .saveAsTable("school_de_stg.results_svakulin")
+    .option("path", s"hdfs://ns-etl/warehouse/tablespace/external/hive/school_de.db/results_svakulin")
+    .saveAsTable("school_de.results_svakulin")
 
   spark.stop()
 
