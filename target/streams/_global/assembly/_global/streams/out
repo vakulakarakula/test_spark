@@ -6,7 +6,7 @@
 [0m[[0m[0mdebug[0m] [0m[0mMerging files...[0m
 [0m[[0m[0mdebug[0m] [0m[0mMerging 'META-INF\MANIFEST.MF' with strategy 'discard'[0m
 [0m[[0m[0minfo[0m] [0m[0mStrategy 'discard' was applied to a file (Run the task at debug level to see details)[0m
-[0m[[0m[0mdebug[0m] [0m[0mSHA-1: 2fc4d970bb77b173df928c3de6edc6165ae8eb3f[0m
+[0m[[0m[0mdebug[0m] [0m[0mSHA-1: 2a898fa801163cd100cee46ab63da278d87b5968[0m
 [0m[[0m[0mdebug[0m] [0m[0mPackaging C:\Users\svakulin\IdeaProjects\test_spark\target\scala-2.11\test_spark-assembly-0.1.0-SNAPSHOT.jar ...[0m
 [0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	DBCalc$.class[0m

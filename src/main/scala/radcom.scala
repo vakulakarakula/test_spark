@@ -311,7 +311,7 @@ object radcom extends App{
 
 /*Статистика для анализа перемещения абонентов, появившихся на БС, запущенных по программе Устранения цифрового неравенства
 Цель - понять откуда "пришли" абоненты в новое покрытие LTE */
-  val who_ucn = spark
+/*  val who_ucn = spark
     .table("radcom_dds.radcom_cdr_gtpu_p")
     .where((col("probe") isin ("rd","st")) and (col("radcom_cdr_gtpu_p.event_date") between("2023-10-09", "2023-10-22")) and (col("imsi") isin
       ( "250993272904533",
@@ -356,18 +356,20 @@ object radcom extends App{
       avg("peak_throughput_ul").as("peak_throughput_ul")
     )
     .orderBy(desc("total_dl_raw_bytes"),desc("event_date"))
+*/
+
+  val all_tab = spark
+    .sql("show tables from comverse")
+
+  val all_results = all_tab
 
 
-
-  val all_results = who_ucn
-
-
-  all_results
+  all_tab
     .coalesce(1)
     .write
     .mode("overwrite")
-    .option("path", "hdfs://ns-etl/warehouse/tablespace/external/hive/school_de_stg.db/who_ucn_top_imsi")
-    .saveAsTable("school_de_stg.who_ucn_top_imsi")
+    .option("path", "hdfs://ns-etl/warehouse/tablespace/external/hive/school_de_stg.db/all_tab")
+    .saveAsTable("school_de_stg.all_tab")
 
   spark.stop()
 }
